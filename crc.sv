@@ -37,13 +37,17 @@ module crc(crc_if m);
 //============================================================
 
 
-  always @(*) begin
-    
-    if     (!m.RW && m.addr == 32'h4003_2000) m.data_rd = crc_data1; 
-    else if(!m.RW && m.addr == 32'h4003_2004) m.data_rd = crc_poly; 
-    else if(!m.RW && m.addr == 32'h4003_2008) m.data_rd = crc_ctrl; 
-    else m.data_rd = 32'h0000_1234;
-    end
+  always @(*) 
+   begin				// This block is written for the read operation.
+     if(m.Sel)
+      begin
+        //if     (!m.RW && m.addr == 32'h4003_2000) m.data_rd = crc_data1; 
+        if(!m.RW && m.addr == 32'h4003_2004) m.data_rd = crc_poly; 
+        else if(!m.RW && m.addr == 32'h4003_2008) m.data_rd = crc_ctrl;
+	else m.data_rd = crc_data1;
+      end
+     else m.data_rd = 32'h0000_1234;
+  end
 
   always@(posedge m.clk or posedge m.rst)
     begin
