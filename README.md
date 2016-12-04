@@ -6,7 +6,7 @@ The cyclic redundancy check (CRC) module generates 16/32-bit CRC code for error 
 The CRC module provides a programmable polynomial and other parameters required to implement a 16-bit or 32-bit CRC standard. 
 The 16/32-bit code is calculated for 32 bits of data at a time. 
 
-** Detailed description: Please go through the attached NXP specification chapter 37 Page 819 for the complete design specification of the CRC block.
+* Detailed description: Please go through the attached NXP specification chapter 37 Page 819 for the complete design specification of the CRC block.
 
 
 
